@@ -1,0 +1,9 @@
+function [vr] = StartReward(vr);
+%% Load and fire...
+putdata(vr.RewardDelivery.daqSessRewardDelivery,vr.RewardDelivery.TTLSignal');  %loads the gun.... 
+start(vr.RewardDelivery.daqSessRewardDelivery);
+%% Log reward data...
+fwrite(vr.RewardDelivery.fidLicking, [vr.timeElapsed vr.pos],'double');
+vr.RewardDelivery.TimeStamps = [vr.RewardDelivery.TimeStamps;vr.timeElapsed];
+end
+
